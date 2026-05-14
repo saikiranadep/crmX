@@ -1,0 +1,37 @@
+app/
+│
+├── core/                # Singleton services (app-wide)
+│   ├── services/
+│   ├── guards/
+│   ├── interceptors/
+│   ├── models/
+│   └── core.config.ts
+│
+├── shared/              # Reusable UI + utilities
+│   ├── components/
+│   ├── directives/
+│   ├── pipes/
+│   ├── ui/              # buttons, inputs, modals
+│   └── utils/
+│
+├── features/            # Business modules (lazy loaded)
+│   ├── auth/
+│   ├── dashboard/
+│   ├── leads/
+│   ├── customers/
+│   ├── deals/
+│   ├── reports/
+│   └── settings/
+│
+├── layout/              # App layout system
+│   ├── components/
+│   │   ├── sidebar/
+│   │   ├── header/
+│   │   └── footer/
+│   └── layout.component.ts
+│
+├── app.routes.ts        # Main routing
+├── app.config.ts        # App-level providers
+└── app.component.ts
+
+
