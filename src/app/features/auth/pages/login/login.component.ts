@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 import {
   FormBuilder,
   ReactiveFormsModule,
@@ -18,10 +19,11 @@ export class LoginComponent implements OnInit {
 
   hidePassword = signal(true);
   loading = signal(false);
+  errorMessage = signal('');
 
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(public fb: FormBuilder, public router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -43,10 +45,23 @@ export class LoginComponent implements OnInit {
 
     this.loading.set(true);
 
-    console.log(this.loginForm.value);
+    const { email, password } = this.loginForm.value;
+    const validEmail = 'admin@test.com';
+    const validPassword = '123456';
+    // console.log(this.loginForm.value);
+
 
     setTimeout(() => {
+      if(email === validEmail && password === validPassword){
+        console.log("Successfull Login...");
+        // Save login session
+        sessionStorage.setItem('isLoggedIn', 'true');
+        this.router.navigate(['/dashboard']);
+      }else{
+        console.log('Invalid credentials');
+        this.errorMessage.set("Invalid email or password")
+      }
       this.loading.set(false);
-    }, 2000);
+    }, 1500);
   }
 }

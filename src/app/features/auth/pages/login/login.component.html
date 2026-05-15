@@ -263,6 +263,11 @@
           >
             {{ loading() ? 'Signing In...' : 'Sign In' }}
           </button>
+            @if(errorMessage()) {
+                <p class="mt-2 text-sm font-medium text-rose-500">
+                {{ errorMessage() }}
+                </p>
+            }
 
         </form>
 
