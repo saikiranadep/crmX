@@ -1,11 +1,296 @@
-<div class="p-10">
+<!-- DASHBOARD PAGE -->
 
-  <h1 class="text-4xl font-black text-slate-900">
-    Dashboard
-  </h1>
+<div class="space-y-6">
 
-  <p class="mt-4 text-slate-600">
-    Welcome to crmX Enterprise CRM
-  </p>
+  <!-- HEADER -->
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+
+    <div>
+      <h1 class="text-2xl font-black text-slate-900">
+        Dashboard
+      </h1>
+
+      <p class="mt-1 text-sm text-slate-500">
+        Monitor CRM performance and business growth
+      </p>
+    </div>
+
+    <button
+      class="rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+    >
+      Generate Report
+    </button>
+
+  </div>
+
+  <!-- KPI CARDS -->
+  <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+
+    <!-- REVENUE -->
+    <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+
+      <div class="flex items-center justify-between">
+
+        <div>
+          <p class="text-sm font-medium text-slate-500">
+            Revenue
+          </p>
+
+          <h2 class="mt-2 text-3xl font-black text-slate-900">
+            ₹84.2K
+          </h2>
+
+          <p class="mt-2 text-xs font-medium text-emerald-600">
+            +12.5% this month
+          </p>
+        </div>
+
+        <div
+          class="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100 text-2xl"
+        >
+          💰
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- SALES -->
+    <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+
+      <div class="flex items-center justify-between">
+
+        <div>
+          <p class="text-sm font-medium text-slate-500">
+            Sales
+          </p>
+
+          <h2 class="mt-2 text-3xl font-black text-slate-900">
+            1,248
+          </h2>
+
+          <p class="mt-2 text-xs font-medium text-blue-600">
+            +8.2% increase
+          </p>
+        </div>
+
+        <div
+          class="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-2xl"
+        >
+          📈
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- CLIENTS -->
+    <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+
+      <div class="flex items-center justify-between">
+
+        <div>
+          <p class="text-sm font-medium text-slate-500">
+            Active Clients
+          </p>
+
+          <h2 class="mt-2 text-3xl font-black text-slate-900">
+            892
+          </h2>
+
+          <p class="mt-2 text-xs font-medium text-violet-600">
+            +24 new today
+          </p>
+        </div>
+
+        <div
+          class="flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-100 text-2xl"
+        >
+          👥
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- TASKS -->
+    <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+
+      <div class="flex items-center justify-between">
+
+        <div>
+          <p class="text-sm font-medium text-slate-500">
+            Open Tasks
+          </p>
+
+          <h2 class="mt-2 text-3xl font-black text-slate-900">
+            342
+          </h2>
+
+          <p class="mt-2 text-xs font-medium text-amber-600">
+            18 pending approvals
+          </p>
+        </div>
+
+        <div
+          class="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-100 text-2xl"
+        >
+          ⏳
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="grid grid-cols-1 gap-6 xl:grid-cols-3">
+
+    <!-- SALES OVERVIEW -->
+    <div
+      class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm xl:col-span-2"
+    >
+
+      <div class="mb-6 flex items-center justify-between">
+
+        <div>
+          <h2 class="text-lg font-black text-slate-900">
+            Sales Overview
+          </h2>
+
+          <p class="text-sm text-slate-500">
+            Monthly revenue analytics
+          </p>
+        </div>
+
+        <button
+          class="rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50"
+        >
+          Export
+        </button>
+
+      </div>
+
+      <!-- FAKE CHART -->
+      <div
+        class="flex h-80 items-end justify-between gap-3 rounded-2xl bg-slate-50 p-6"
+      >
+
+        <div class="w-full rounded-t-xl bg-blue-500" style="height: 40%;"></div>
+
+        <div class="w-full rounded-t-xl bg-blue-500" style="height: 65%;"></div>
+
+        <div class="w-full rounded-t-xl bg-blue-500" style="height: 50%;"></div>
+
+        <div class="w-full rounded-t-xl bg-blue-500" style="height: 85%;"></div>
+
+        <div class="w-full rounded-t-xl bg-blue-500" style="height: 70%;"></div>
+
+        <div class="w-full rounded-t-xl bg-blue-500" style="height: 95%;"></div>
+
+        <div class="w-full rounded-t-xl bg-blue-500" style="height: 78%;"></div>
+
+      </div>
+
+    </div>
+
+    <!-- RECENT ACTIVITY -->
+    <div
+      class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+    >
+
+      <div class="mb-6">
+        <h2 class="text-lg font-black text-slate-900">
+          Recent Activity
+        </h2>
+
+        <p class="text-sm text-slate-500">
+          Latest CRM updates
+        </p>
+      </div>
+
+      <div class="space-y-5">
+
+        <!-- ITEM -->
+        <div class="flex gap-4">
+
+          <div
+            class="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100"
+          >
+            ✅
+          </div>
+
+          <div>
+            <p class="font-semibold text-slate-800">
+              Deal Closed Successfully
+            </p>
+
+            <p class="text-sm text-slate-500">
+              Enterprise contract finalized
+            </p>
+
+            <span class="mt-1 block text-xs text-slate-400">
+              2 min ago
+            </span>
+          </div>
+
+        </div>
+
+        <!-- ITEM -->
+        <div class="flex gap-4">
+
+          <div
+            class="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-blue-100"
+          >
+            📞
+          </div>
+
+          <div>
+            <p class="font-semibold text-slate-800">
+              Client Meeting Scheduled
+            </p>
+
+            <p class="text-sm text-slate-500">
+              Product demo at 4 PM
+            </p>
+
+            <span class="mt-1 block text-xs text-slate-400">
+              1 hour ago
+            </span>
+          </div>
+
+        </div>
+
+        <!-- ITEM -->
+        <div class="flex gap-4">
+
+          <div
+            class="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-rose-100"
+          >
+            ⚠️
+          </div>
+
+          <div>
+            <p class="font-semibold text-slate-800">
+              Pending Approval
+            </p>
+
+            <p class="text-sm text-slate-500">
+              Awaiting manager confirmation
+            </p>
+
+            <span class="mt-1 block text-xs text-slate-400">
+              Yesterday
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </div>

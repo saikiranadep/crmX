@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       remember: [false]
     });
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     this.loading.set(true);
 
     const { email, password } = this.loginForm.value;
-    const validEmail = 'admin@test.com';
+    const validEmail = 'admin';
     const validPassword = '123456';
     // console.log(this.loginForm.value);
 
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
         console.log("Successfull Login...");
         // Save login session
         sessionStorage.setItem('isLoggedIn', 'true');
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/home']);
       }else{
         console.log('Invalid credentials');
         this.errorMessage.set("Invalid email or password")

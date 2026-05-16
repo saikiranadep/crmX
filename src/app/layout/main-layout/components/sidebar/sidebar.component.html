@@ -1,0 +1,108 @@
+<aside
+  class="flex h-full flex-col border-r border-slate-200 bg-white transition-all duration-300"
+  [class.w-72]="!collapsed"
+  [class.w-24]="collapsed"
+>
+
+  <!-- TOP -->
+  <div
+    class="flex h-20 items-center justify-between border-b border-slate-100 px-4"
+  >
+
+    <!-- LOGO -->
+    <div class="flex items-center gap-3">
+
+      <div
+        class="flex h-14 w-36 items-center justify-center rounded-2xl bg-gradient-to-br from-slate-900 via-blue-700 to-cyan-500 text-lg font-black text-white"
+      >
+        crmX
+      </div>
+
+      @if (!collapsed) {
+
+        <div>
+
+          <!-- <h1 class="text-sm font-black text-slate-600">
+            Empowers Teams. Accelerate Growth
+          </h1> -->
+
+          <!-- <p class="text-xs tracking-[3px] text-slate-400">
+            ENTERPRISE CRM
+          </p> -->
+
+        </div>
+
+      }
+
+    </div>
+
+    <!-- DESKTOP COLLAPSE -->
+    <button
+      class="hidden rounded-xl bg-slate-100 p-2 text-sm hover:bg-slate-200 lg:block"
+      (click)="toggleCollapse.emit()"
+    >
+      {{ collapsed ? '➡️' : '⬅️' }}
+    </button>
+
+    <!-- MOBILE CLOSE -->
+    <button
+      class="rounded-xl bg-slate-100 p-2 lg:hidden"
+      (click)="closeSidebar.emit()"
+    >
+      ✕
+    </button>
+
+  </div>
+
+  <!-- MENU -->
+  <nav class="flex-1 overflow-y-auto px-3 py-6">
+
+  <div class="space-y-2">
+
+    <!-- HOME / DASHBOARD -->
+    <!-- <a
+      routerLink="/home"
+      routerLinkActive="bg-slate-900 text-white shadow-md ring-1 ring-white/10"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="flex items-center gap-2 rounded-xl px-4 py-3 text-slate-600 transition-all duration-200 hover:bg-slate-100 hover:text-slate-900"
+    >
+      <span class="text-lg">🏠</span>
+
+      @if (!collapsed) {
+        <span class="font-semibold">Home</span>
+      }
+    </a> -->
+
+    <!-- LEADS -->
+    <a
+      routerLink="/leads"
+      routerLinkActive="bg-slate-100 text-black shadow-md ring-1 ring-white/10"
+      class="flex items-center gap-2 rounded-xl px-4 py-3 text-slate-600 transition-all duration-200 hover:bg-slate-100 hover:text-slate-900"
+    >
+      <span class="text-lg">💼</span>
+
+      @if (!collapsed) {
+        <span class="font-semibold">Leads</span>
+      }
+    </a>
+
+    <!-- DASHBOARD -->
+    <a
+      routerLink="/dashboard"
+      routerLinkActive="bg-slate-200 text-black shadow-md ring-1 ring-white/10"
+      class="flex items-center gap-2 rounded-xl px-4 py-3 text-slate-600 transition-all duration-200 hover:bg-slate-100 hover:text-slate-900"
+    >
+      <span class="text-lg">📊</span>
+
+      @if (!collapsed) {
+        <span class="font-semibold">Dashboard</span>
+      }
+    </a>
+
+  </div>
+
+</nav>
+
+  
+
+</aside>
