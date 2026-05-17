@@ -30,6 +30,7 @@ export class HeaderComponent {
   currentPage = 'Home';
 
   @Output()
+  readonly menuClick = new EventEmitter<void>();
 
   ngOnInit(): void {
 
@@ -69,7 +70,6 @@ export class HeaderComponent {
     });
 
   }
-  readonly menuClick = new EventEmitter<void>();
 
   toggleProfileMenu(): void {
 

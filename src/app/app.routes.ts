@@ -41,7 +41,7 @@ export const routes: Routes = [
   */
 
   {
-    path: '',
+    path: 'app',
 
     canActivate: [authGuard],
 

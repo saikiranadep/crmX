@@ -1,6 +1,6 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
+import { Component, signal, inject } from '@angular/core';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 
@@ -15,9 +15,21 @@ import { HeaderComponent } from './components/header/header.component';
   templateUrl: './main-layout.component.html'
 })
 export class MainLayoutComponent {
+  private readonly router = inject(Router);
   readonly sidebarOpen = signal(false);
   readonly sidebarCollapsed = signal(false);
+ 
+  constructor() {
 
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+
+        this.sidebarOpen.set(false);
+
+      });
+
+  }
   toggleSidebar(): void {
 
     this.sidebarOpen.update(value => !value);

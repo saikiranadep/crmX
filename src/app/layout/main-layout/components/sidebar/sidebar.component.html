@@ -1,5 +1,5 @@
 <aside
-  class="flex h-full flex-col border-r border-slate-200 bg-white transition-all duration-300"
+  class="flex h-full flex-col overflow-hidden border-r border-slate-200 bg-white transition-[width] duration-300 ease-in-out"
   [class.w-72]="!collapsed"
   [class.w-24]="collapsed"
 >
@@ -13,22 +13,22 @@
     <div class="flex items-center gap-3">
 
       <div
-        class="flex h-14 w-36 items-center justify-center rounded-2xl bg-gradient-to-br from-slate-900 via-blue-700 to-cyan-500 text-lg font-black text-white"
+        class="flex items-center justify-center rounded-2xl bg-gradient-to-br from-slate-900 via-blue-700 to-cyan-500 font-black text-white shadow-md transition-all duration-300"
+        [class.h-14]="!collapsed"
+        [class.w-36]="!collapsed"
+        [class.text-lg]="!collapsed"
+        [class.h-12]="collapsed"
+        [class.w-12]="collapsed"
+        [class.text-xl]="collapsed"
       >
-        crmX
+        {{ collapsed ? 'X' : 'crmX' }}
       </div>
 
       @if (!collapsed) {
 
         <div>
 
-          <!-- <h1 class="text-sm font-black text-slate-600">
-            Empowers Teams. Accelerate Growth
-          </h1> -->
-
-          <!-- <p class="text-xs tracking-[3px] text-slate-400">
-            ENTERPRISE CRM
-          </p> -->
+          <!-- OPTIONAL CONTENT -->
 
         </div>
 
@@ -37,16 +37,21 @@
     </div>
 
     <!-- DESKTOP COLLAPSE -->
-    <button
-      class="hidden rounded-xl bg-slate-100 p-2 text-sm hover:bg-slate-200 lg:block"
+    <!-- <button
+      class="hidden rounded-xl bg-slate-100 p-2 text-sm transition hover:bg-slate-200 lg:block"
       (click)="toggleCollapse.emit()"
     >
       {{ collapsed ? '➡️' : '⬅️' }}
+    </button> -->
+    <button
+      class="hidden rounded-xl bg-slate-100 p-2 text-sm transition hover:bg-slate-200 lg:block"
+      (click)="toggleCollapse.emit()"
+    >
+      {{ collapsed ? '→' : '←' }}
     </button>
-
     <!-- MOBILE CLOSE -->
     <button
-      class="rounded-xl bg-slate-100 p-2 lg:hidden"
+      class="rounded-xl bg-slate-100 p-2 transition hover:bg-slate-200 lg:hidden"
       (click)="closeSidebar.emit()"
     >
       ✕
@@ -57,52 +62,79 @@
   <!-- MENU -->
   <nav class="flex-1 overflow-y-auto px-3 py-6">
 
-  <div class="space-y-2">
+    <div class="space-y-2">
 
-    <!-- HOME / DASHBOARD -->
-    <!-- <a
-      routerLink="/home"
-      routerLinkActive="bg-slate-900 text-white shadow-md ring-1 ring-white/10"
-      [routerLinkActiveOptions]="{ exact: true }"
-      class="flex items-center gap-2 rounded-xl px-4 py-3 text-slate-600 transition-all duration-200 hover:bg-slate-100 hover:text-slate-900"
-    >
-      <span class="text-lg">🏠</span>
+      <!-- LEADS -->
+      <a
+        routerLink="/app/leads"
+        routerLinkActive="bg-slate-100 text-black shadow-md ring-1 ring-white/10"
+        class="flex items-center rounded-xl px-4 py-3 text-slate-600 transition-all duration-300 hover:bg-slate-100 hover:text-slate-900"
+        [class.justify-center]="collapsed"
+        [class.gap-2]="!collapsed"
+      >
 
-      @if (!collapsed) {
-        <span class="font-semibold">Home</span>
-      }
-    </a> -->
+        <span class="text-lg">
+          💼
+        </span>
 
-    <!-- LEADS -->
-    <a
-      routerLink="/leads"
-      routerLinkActive="bg-slate-100 text-black shadow-md ring-1 ring-white/10"
-      class="flex items-center gap-2 rounded-xl px-4 py-3 text-slate-600 transition-all duration-200 hover:bg-slate-100 hover:text-slate-900"
-    >
-      <span class="text-lg">💼</span>
+        @if (!collapsed) {
 
-      @if (!collapsed) {
-        <span class="font-semibold">Leads</span>
-      }
-    </a>
+          <span class="font-semibold">
+            Leads
+          </span>
 
-    <!-- DASHBOARD -->
-    <a
-      routerLink="/dashboard"
-      routerLinkActive="bg-slate-200 text-black shadow-md ring-1 ring-white/10"
-      class="flex items-center gap-2 rounded-xl px-4 py-3 text-slate-600 transition-all duration-200 hover:bg-slate-100 hover:text-slate-900"
-    >
-      <span class="text-lg">📊</span>
+        }
 
-      @if (!collapsed) {
-        <span class="font-semibold">Dashboard</span>
-      }
-    </a>
+      </a>
 
-  </div>
+      <!-- DASHBOARD -->
+      <a
+        routerLink="/app/dashboard"
+        routerLinkActive="bg-slate-200 text-black shadow-md ring-1 ring-white/10"
+        class="flex items-center rounded-xl px-4 py-3 text-slate-600 transition-all duration-300 hover:bg-slate-100 hover:text-slate-900"
+        [class.justify-center]="collapsed"
+        [class.gap-2]="!collapsed"
+      >
 
-</nav>
+        <span class="text-lg">
+          📊
+        </span>
 
-  
+        @if (!collapsed) {
+
+          <span class="font-semibold">
+            Dashboard
+          </span>
+
+        }
+
+      </a>
+
+      <!-- CUSTOMERS -->
+      <a
+        routerLink="/app/customers"
+        routerLinkActive="bg-slate-200 text-black shadow-md ring-1 ring-white/10"
+        class="flex items-center rounded-xl px-4 py-3 text-slate-600 transition-all duration-300 hover:bg-slate-100 hover:text-slate-900"
+        [class.justify-center]="collapsed"
+        [class.gap-2]="!collapsed"
+      >
+
+        <span class="text-lg">
+          👥
+        </span>
+
+        @if (!collapsed) {
+
+          <span class="font-semibold">
+            Customers
+          </span>
+
+        }
+
+      </a>
+
+    </div>
+
+  </nav>
 
 </aside>

@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
         console.log("Successfull Login...");
         // Save login session
         sessionStorage.setItem('isLoggedIn', 'true');
-        this.router.navigate(['/home']);
+        this.router.navigate(['/app/home']);
       }else{
         console.log('Invalid credentials');
         this.errorMessage.set("Invalid email or password")
