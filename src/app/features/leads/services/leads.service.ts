@@ -13,11 +13,11 @@ export class LeadsService {
       company: 'Google',
       email: 'john@google.com',
       phone: '+91 9876543210',
-      source: 'Website, It shoulkd be from import section via only need it in websrite the data is migrated from database to crm ',
+      source: 'Website',
       status: 'New',
       assignedTo: 'Admin',
       budget: 15000,
-      notes: 'Interested in CRM solution.',
+      notes: 'Interested in CRM solution.Interested in CRM solution.Interested in CRM solution.Interested in CRM solution.Interested in CRM solution.Interested in CRM solution.Interested in CRM solution.Interested in CRM solution.Interested in CRM solution.',
       createdAt: '2026-05-17'
     },
     {

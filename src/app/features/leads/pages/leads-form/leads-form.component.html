@@ -1,0 +1,316 @@
+<div class="h-full overflow-y-auto">
+
+  <!-- HEADER -->
+  <div
+    class="border-b border-slate-200 bg-white px-4 py-5 sm:px-6 lg:px-8"
+  >
+
+    <div
+      class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+    >
+
+      <div>
+
+        <h1
+          class="text-2xl font-black text-slate-900 sm:text-3xl"
+        >
+
+          {{
+            isEditMode
+              ? 'Edit Lead'
+              : 'Create Lead'
+          }}
+
+        </h1>
+
+        <!-- <p class="mt-1 text-sm text-slate-500 sm:text-base">
+
+          {{
+            isEditMode
+              ? 'Update lead information'
+              : 'Create new lead record'
+          }}
+
+        </p> -->
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FORM -->
+  <form
+    [formGroup]="leadForm"
+    (ngSubmit)="submit()"
+    class="p-4 sm:p-6 lg:p-8"
+  >
+
+    <!-- SINGLE FORM CONTAINER -->
+    <!-- <div
+      class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6 lg:p-8"
+    > -->
+
+      <!-- GRID -->
+      <div
+        class="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+      >
+
+        <!-- FULL NAME -->
+        <div>
+
+          <label
+            class="mb-2 block text-sm font-semibold text-slate-700"
+          >
+            Full Name
+          </label>
+
+          <input
+            type="text"
+            formControlName="fullName"
+            placeholder="John Doe"
+            class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 sm:px-5 sm:py-4"
+          />
+
+          @if (
+            leadForm.controls['fullName'].touched &&
+            leadForm.controls['fullName'].invalid
+          ) {
+
+            <p
+              class="mt-2 text-sm font-medium text-red-500"
+            >
+              Full name is required
+            </p>
+
+          }
+
+        </div>
+
+        <!-- COMPANY -->
+        <div>
+
+          <label
+            class="mb-2 block text-sm font-semibold text-slate-700"
+          >
+            Company
+          </label>
+
+          <input
+            type="text"
+            formControlName="company"
+            placeholder="Google"
+            class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 sm:px-5 sm:py-4"
+          />
+
+        </div>
+
+        <!-- EMAIL -->
+        <div>
+
+          <label
+            class="mb-2 block text-sm font-semibold text-slate-700"
+          >
+            Email
+          </label>
+
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="john@example.com"
+            class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 sm:px-5 sm:py-4"
+          />
+
+        </div>
+
+        <!-- PHONE -->
+        <div>
+
+          <label
+            class="mb-2 block text-sm font-semibold text-slate-700"
+          >
+            Phone
+          </label>
+
+          <input
+            type="text"
+            formControlName="phone"
+            placeholder="+91 9876543210"
+            class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 sm:px-5 sm:py-4"
+          />
+
+        </div>
+
+        <!-- SOURCE -->
+        <div>
+
+          <label
+            class="mb-2 block text-sm font-semibold text-slate-700"
+          >
+            Source
+          </label>
+
+          <select
+            formControlName="source"
+            class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 sm:px-5 sm:py-4"
+          >
+
+            <option value="">
+              Select Source
+            </option>
+
+            <option value="Website">
+              Website
+            </option>
+
+            <option value="LinkedIn">
+              LinkedIn
+            </option>
+
+            <option value="Referral">
+              Referral
+            </option>
+
+          </select>
+
+        </div>
+
+        <!-- STATUS -->
+        <div>
+
+          <label
+            class="mb-2 block text-sm font-semibold text-slate-700"
+          >
+            Status
+          </label>
+
+          <select
+            formControlName="status"
+            class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 sm:px-5 sm:py-4"
+          >
+
+            <option value="">
+              Select Status
+            </option>
+
+            <option value="New">
+              New
+            </option>
+
+            <option value="Qualified">
+              Qualified
+            </option>
+
+            <option value="Won">
+              Won
+            </option>
+
+          </select>
+
+        </div>
+
+        <!-- ASSIGNED -->
+        <div>
+
+          <label
+            class="mb-2 block text-sm font-semibold text-slate-700"
+          >
+            Assigned To
+          </label>
+
+          <input
+            type="text"
+            formControlName="assignedTo"
+            placeholder="Admin"
+            class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 sm:px-5 sm:py-4"
+          />
+
+        </div>
+
+        <!-- BUDGET -->
+        <div>
+
+          <label
+            class="mb-2 block text-sm font-semibold text-slate-700"
+          >
+            Budget
+          </label>
+
+          <input
+            type="number"
+            formControlName="budget"
+            placeholder="50000"
+            class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 sm:px-5 sm:py-4"
+          />
+
+        </div>
+        <div>
+
+            <label
+                class="mb-2 block text-sm font-semibold text-slate-700"
+            >
+                Notes
+            </label>
+
+            <textarea
+                rows="3"
+                formControlName="notes"
+                placeholder="Write notes here..."
+                class="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 sm:px-5 sm:py-4"
+            ></textarea>
+
+        </div>
+
+      </div>
+
+      <!-- NOTES -->
+      <!-- <div class="mt-6">
+
+        <label
+          class="mb-2 block text-sm font-semibold text-slate-700"
+        >
+          Notes
+        </label>
+
+        <textarea
+          rows="5"
+          formControlName="notes"
+          placeholder="Write notes here..."
+          class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 sm:px-5 sm:py-4"
+        ></textarea>
+
+      </div> -->
+
+      <!-- BUTTONS -->
+      <div
+        class="mt-8 flex flex-col gap-4 sm:flex-row"
+      >
+
+        <button
+          type="submit"
+          class="rounded-2xl bg-gradient-to-r from-slate-900 via-blue-700 to-cyan-500 px-6 py-3 font-bold text-white shadow-lg transition hover:scale-[1.01]"
+        >
+
+          {{
+            isEditMode
+              ? 'Update Lead'
+              : 'Create Lead'
+          }}
+
+        </button>
+
+        <button
+          type="button"
+          routerLink="/app/leads"
+          class="rounded-2xl border border-slate-200 bg-white px-6 py-3 font-semibold text-slate-700 transition hover:bg-slate-50"
+        >
+          Cancel
+        </button>
+
+      </div>
+
+    <!-- </div> -->
+
+  </form>
+
+</div>

@@ -14,29 +14,44 @@ export const LEADS_ROUTES: Routes = [
 
     children: [
 
-    //   {
-    //     path: '',
-    //     redirectTo: 'create',
-    //     pathMatch: 'full'
-    //   },
-        {
+      /*
+      |--------------------------------------------------------------------------
+      | DEFAULT REDIRECT
+      |--------------------------------------------------------------------------
+      */
+
+      {
         path: '',
+        pathMatch: 'full',
 
         loadComponent: () =>
-            import('./pages/leads-redirect/leads-redirect.component')
+          import('./pages/leads-redirect/leads-redirect.component')
             .then(m => m.LeadsRedirectComponent)
-        },
+      },
+
+      /*
+      |--------------------------------------------------------------------------
+      | CREATE LEAD
+      |--------------------------------------------------------------------------
+      */
 
       {
         path: 'create',
 
         loadComponent: () =>
-          import('./pages/leads-create/leads-create.component')
-            .then(m => m.LeadsCreateComponent),
+          import('./pages/leads-form/leads-form.component')
+            .then(m => m.LeadsFormComponent),
+
         data: {
           breadcrumb: 'Create'
         }
       },
+
+      /*
+      |--------------------------------------------------------------------------
+      | LEAD DETAIL
+      |--------------------------------------------------------------------------
+      */
 
       {
         path: ':id/detail',
@@ -44,17 +59,25 @@ export const LEADS_ROUTES: Routes = [
         loadComponent: () =>
           import('./pages/leads-detail/leads-detail.component')
             .then(m => m.LeadsDetailComponent),
+
         data: {
           breadcrumb: 'Detail'
         }
       },
 
+      /*
+      |--------------------------------------------------------------------------
+      | EDIT LEAD
+      |--------------------------------------------------------------------------
+      */
+
       {
         path: ':id/edit',
 
         loadComponent: () =>
-          import('./pages/leads-edit/leads-edit.component')
-            .then(m => m.LeadsEditComponent),
+          import('./pages/leads-form/leads-form.component')
+            .then(m => m.LeadsFormComponent),
+
         data: {
           breadcrumb: 'Edit'
         }
