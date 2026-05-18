@@ -118,6 +118,25 @@
           </p>
         </div>
 
+        <div class="min-w-0 relative group">
+          <p class="text-xs uppercase tracking-wide text-slate-400">
+            Notes
+          </p>
+
+          <p
+            class="mt-1 font-medium text-slate-800 break-words line-clamp-2 cursor-pointer"
+          >
+            {{ lead.notes }}
+          </p>
+
+          <!-- Tooltip -->
+          <div
+            class="absolute left-0 top-full z-50 hidden group-hover:block mt-2 w-80 rounded-lg bg-slate-900 p-3 text-sm text-white shadow-lg whitespace-pre-wrap break-words"
+          >
+            {{ lead.notes }}
+          </div>
+        </div>
+
       </div>
 
       <!-- Notes -->
