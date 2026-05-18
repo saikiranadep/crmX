@@ -110,6 +110,8 @@ implements OnInit {
 
     if (this.isEditMode) {
 
+      this.leadForm.get('budget')?.disable();
+
       const lead =
         this.leadsService
           .getLeadById(Number(this.id));

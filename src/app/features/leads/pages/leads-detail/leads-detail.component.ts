@@ -61,5 +61,8 @@ export class LeadsDetailComponent {
     ]);
 
   }
+  deleteLead() {
+    console.log('Delete clicked');
+  }
 
 }

@@ -1,5 +1,11 @@
-import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import {
+  Component,
+  OnInit,
+  inject
+} from '@angular/core';
+
+import { Router }
+from '@angular/router';
 
 import { LeadsService }
 from '../../services/leads.service';
@@ -9,14 +15,16 @@ from '../../services/leads.service';
   standalone: true,
   template: ''
 })
-export class LeadsRedirectComponent {
+export class LeadsRedirectComponent
+implements OnInit {
 
-  private readonly router = inject(Router);
+  private readonly router =
+    inject(Router);
 
   private readonly leadsService =
     inject(LeadsService);
 
-  constructor() {
+  ngOnInit(): void {
 
     const leads =
       this.leadsService.leads();
@@ -26,18 +34,27 @@ export class LeadsRedirectComponent {
       const latestLead =
         leads[leads.length - 1];
 
-      this.router.navigate([
-        '/app/leads',
-        latestLead.id,
-        'detail'
-      ]);
+      // setTimeout(() => {
+
+        this.router.navigate([
+          '/app/leads',
+          latestLead.id,
+          'detail'
+        ]);
+
+      // });
 
     }
+
     else {
 
-      this.router.navigate([
-        '/app/leads/create'
-      ]);
+      // setTimeout(() => {
+
+        this.router.navigate([
+          '/app/leads/create'
+        ]);
+
+      // });
 
     }
 
