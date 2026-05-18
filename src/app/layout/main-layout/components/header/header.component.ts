@@ -29,17 +29,19 @@ export class HeaderComponent {
 
   currentPage = 'Home';
 
+  breadcrumbs: string[] = [];
+
   @Output()
   readonly menuClick = new EventEmitter<void>();
 
   ngOnInit(): void {
 
-    this.updateBreadcrumb();
+    this.buildBreadcrumb();
 
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.updateBreadcrumb();
+        this.buildBreadcrumb();
         // let route = this.activatedRoute;
 
         // while (route.firstChild) {
@@ -51,6 +53,33 @@ export class HeaderComponent {
         // });
 
       });
+
+  }
+  private buildBreadcrumb(): void {
+
+    const breadcrumbs: string[] = ['Home'];
+
+    let route = this.activatedRoute.root;
+
+    while (route.firstChild) {
+
+      route = route.firstChild;
+
+      const breadcrumb =
+        route.snapshot.data['breadcrumb'];
+
+      if (breadcrumb) {
+
+        breadcrumbs.push(breadcrumb);
+
+      }
+
+    }
+
+    this.breadcrumbs = breadcrumbs;
+
+    this.currentPage =
+      breadcrumbs[breadcrumbs.length - 1];
 
   }
 

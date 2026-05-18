@@ -14,33 +14,43 @@
     </button>
 
     <!-- TITLE + BREADCRUMB -->
-      <div>
+      <div
+  class="mt-1 flex flex-wrap items-center gap-2 text-sm text-slate-500"
+>
 
-        <h1 class="text-xl font-black text-slate-900 sm:text-2xl">
-          {{ currentPage }}
-        </h1>
+  @for (
+    item of breadcrumbs;
+    track $index
+  ) {
 
-        <!-- BREADCRUMB -->
-        <div class="mt-1 flex items-center gap-2 text-sm text-slate-500">
+    <!-- HOME -->
+    @if ($index === 0) {
 
-          <!-- <span class="cursor-pointer hover:text-slate-700">
-            Home
-          </span> -->
-          <a
-            routerLink="/app/home"
-            class="cursor-pointer transition hover:text-slate-700 hover:underline"
-          >
-            Home
-          </a>
-          <span>/</span>
+      <a
+        routerLink="/app/home"
+        class="transition hover:text-slate-700 hover:underline"
+      >
+        {{ item }}
+      </a>
 
-          <span class="font-semibold text-slate-700">
-            {{ currentPage }}
-          </span>
+    }
 
-        </div>
+    <!-- OTHER -->
+    @else {
 
-      </div>
+      <span>/</span>
+
+      <span
+        class="font-semibold text-slate-700"
+      >
+        {{ item }}
+      </span>
+
+    }
+
+  }
+
+</div>
 
   </div>
 
