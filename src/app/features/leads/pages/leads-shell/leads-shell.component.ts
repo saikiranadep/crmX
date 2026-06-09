@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet, Router, RouterModule } from '@angular/router';
 
 import { LeadsListComponent }
-from '../../components/leads-list/leads-list.component';
+from '../leads-list/leads-list.component';
 
 @Component({
   selector: 'app-leads-shell',

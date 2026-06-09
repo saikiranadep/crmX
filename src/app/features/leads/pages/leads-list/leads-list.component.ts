@@ -22,7 +22,7 @@ export class LeadsListComponent {
   openLead(id: number): void {
 
     this.router.navigate(['/app/leads', id, 'detail']);
-
+    
   }
 
   createLead(): void {

@@ -19,7 +19,7 @@ import {
   Router,
   RouterModule
 } from '@angular/router';
-
+import { MatIconModule } from '@angular/material/icon';
 import { LeadsService }
 from '../../services/leads.service';
 
@@ -29,7 +29,8 @@ from '../../services/leads.service';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    MatIconModule
   ],
   templateUrl: './leads-form.component.html'
 })
