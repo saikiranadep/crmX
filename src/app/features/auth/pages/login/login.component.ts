@@ -1,43 +1,81 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
-import {
-  FormBuilder,
-  ReactiveFormsModule,
-  Validators,
-  FormGroup
-} from '@angular/forms';
+import { Component, signal, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
+import { finalize } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
   hidePassword = signal(true);
   loading = signal(false);
   errorMessage = signal('');
 
   loginForm!: FormGroup;
 
-  constructor(public fb: FormBuilder, public router: Router) {}
+  constructor(
+    public fb: FormBuilder,
+    public router: Router,
+    public authService: AuthService,
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      remember: [false]
+      remember: [false],
     });
   }
 
   togglePassword(): void {
-    this.hidePassword.update(value => !value);
+    this.hidePassword.update((value) => !value);
   }
 
   submit(): void {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+
+      return;
+    }
+
+    this.errorMessage.set('');
+
+    // this.loading.set(true);
+
+    const { remember, ...loginPayload } = this.loginForm.getRawValue();
+    console.log('LOGIN PAYLOAD', loginPayload);
+    this.authService
+      .login(loginPayload)
+      .pipe(
+        finalize(() => {
+          // this.loading.set(false);
+        }),
+      )
+      .subscribe({
+        next: (res: any) => {
+          console.log('STEP 1');
+          if (res.success === true) {
+            console.log('STEP 2');
+            console.log('LOGIN RESPONSE', res);
+            sessionStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('token', res.data.accessToken);
+            console.log('TOKEN STORED', localStorage.getItem('token'));
+            this.router.navigate(['/app/home']);
+          }
+        },
+        error: (error: any) => {
+          console.error('LOGIN error', error);
+          this.errorMessage.set(error?.error?.message ?? 'Unable to login. Please try again.');
+        },
+      });
+  }
+  /* submit(): void {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;
@@ -63,5 +101,5 @@ export class LoginComponent implements OnInit {
       }
       this.loading.set(false);
     }, 1500);
-  }
+  } */
 }
