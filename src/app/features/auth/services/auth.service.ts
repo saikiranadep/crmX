@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 
-import { tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { HttpService } from '../../../core/api/http.service';
 
@@ -21,7 +21,7 @@ export class AuthService {
     );
   }
 
-  logout() {
+  logout(): Observable <any> {
     return this.http.post(
       API_ENDPOINTS.AUTH.LOGOUT,
 
